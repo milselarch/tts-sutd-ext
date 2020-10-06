@@ -48,7 +48,10 @@ const start = async () => {
     })
 
     if (url.startsWith(`${base_url}/tt_login.aspx`)) {
-        console.log('DECLARE RESPONSE', result, result.declare_needed, result.temp_needed)
+        console.log(
+            'DECLARE RESPONSE', result, result.declare_needed,
+            result.temp_needed
+        )
         if (result.declare_needed || result.temp_needed) {
             const login_status = $('#pgContent1_valPassword').text();
             // alert(`LOGIN STATUS ${login_status}`)
