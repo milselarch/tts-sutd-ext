@@ -34,6 +34,14 @@ const isToday = (someDate) => {
     )
 }
 
+function wait_for_autocomplete() {
+    return new Promise(resolve => {
+        $('form').on('input', () => {
+            resolve(true)
+        })
+    })
+}
+
 const start = async () => {
     const url = window.location.href
     console.log('URL NOW', url)
@@ -53,14 +61,28 @@ const start = async () => {
             result.temp_needed
         )
         if (result.declare_needed || result.temp_needed) {
-            await asleep(100)
-            const login_status = $('#pgContent1_valPassword').text();
+            const start_time = new Date()
+            await wait_for_autocomplete()
+
+            const end_time = new Date()
+            const time_diff = (end_time - start_time) / 1000
+            console.log('TIME DIFF', time_diff)
+            await asleep(1000)
+
+            const status_field = $('#pgContent1_valPassword')
+            const login_status = status_field.text().trim();
             // alert(`LOGIN STATUS ${login_status}`)
             
-            const ID = $('#pgContent1_uiLoginid').val().trim();
+            const user_field = $('#pgContent1_uiLoginid')
+            const ID = user_field.val().trim();
             console.log('STAT ID', [login_status, ID])
+            console.log('USER FIELD', user_field)
 
-            if ((login_status === "") && (ID !== "")) {
+            if (
+                (time_diff < 10) && 
+                (login_status === "") && 
+                (ID !== "")
+            ) {
                 console.log('CLICK LOGIN BTTN')
                 $('#pgContent1_btnLogin').trigger('click')
                 return
