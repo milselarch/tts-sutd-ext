@@ -53,6 +53,7 @@ const start = async () => {
             result.temp_needed
         )
         if (result.declare_needed || result.temp_needed) {
+            await asleep(100)
             const login_status = $('#pgContent1_valPassword').text();
             // alert(`LOGIN STATUS ${login_status}`)
             
