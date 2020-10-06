@@ -2,7 +2,8 @@
 
 Opens up declaration page daily + temperature taking twice daily.  
 This extension opens up the temperature taking form once between 0500-1300, and the second time from 1800-2359  
-[How to manually install a chrome extension](https://www.cnet.com/how-to/how-to-install-chrome-extensions-manually/)
+[How to manually install a chrome extension](https://ui.vision/howto/install-chrome-extension-from-file)
+
 
 Note: the chrome extension opens, fills up, but does not submit your declaration / temperature takings - you still have to manually press the submit button yourself
 
